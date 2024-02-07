@@ -1,5 +1,52 @@
 //blackbox.ai generated
 
+//https://learn.microsoft.com/en-us/windows/win32/winsock/sio-rcvall
+//https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-inet_ntoa
+//https://en.wikipedia.org/wiki/Internet_Protocol_version_4#Header
+//https://docs.python.org/3/library/struct.html
+
+//permission issue? cannot run though
+
+'''
+//struct ipheader {
+ unsigned char ip_hl:4, ip_v:4; /* this means that each member is 4 bits */
+ unsigned char ip_tos;
+ unsigned short int ip_len;
+ unsigned short int ip_id;
+ unsigned short int ip_off;
+ unsigned char ip_ttl;
+ unsigned char ip_p;
+ unsigned short int ip_sum;
+ unsigned int ip_src;
+ unsigned int ip_dst;
+}; 
+'''
+
+```
+!: This specifies that the byte order is big-endian. Network byte order is always big-endian, which means the most significant byte is stored first. This is important for interpreting multi-byte numbers correctly across different systems that may use different byte orders natively.
+
+B: Unsigned char (1 byte). The first B is for the version and IHL (Internet Header Length) fields, which are packed into a single byte. The version is the first 4 bits, and the IHL is the last 4 bits of this byte.
+
+B: Unsigned char (1 byte). This represents the Type of Service (ToS) field, which is used to specify how an IP packet should be handled.
+
+H: Unsigned short (2 bytes). This is for the Total Length field, indicating the entire packet size, including header and data, in bytes.
+
+H: Unsigned short (2 bytes). This represents the Identification field, used in fragmentation.
+
+H: Unsigned short (2 bytes). This is for the Flags and Fragment Offset fields. The Flags are the first 3 bits, and the Fragment Offset occupies the remaining 13 bits. Together, they are used to manage packet fragmentation.
+
+B: Unsigned char (1 byte). This is the Time To Live (TTL) field, which limits the lifespan of a packet in the network to prevent it from circulating indefinitely.
+
+B: Unsigned char (1 byte). This represents the Protocol field, which indicates the next level protocol used in the data portion of the IP packet.
+
+H: Unsigned short (2 bytes). This is for the Header Checksum, a checksum used for error-checking the header.
+
+4s: Four-byte string. This represents the Source IP Address. It's treated as a string of 4 bytes, which matches the size of an IPv4 address.
+
+4s: Four-byte string. This is for the Destination IP Address, formatted the same way as the Source IP Address.
+```
+
+
 import socket
 import datetime
 import struct
