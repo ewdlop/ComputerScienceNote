@@ -1,11 +1,11 @@
-//blackbox.ai generated
+#blackbox.ai generated
 
-//https://learn.microsoft.com/en-us/windows/win32/winsock/sio-rcvall
-//https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-inet_ntoa
-//https://en.wikipedia.org/wiki/Internet_Protocol_version_4#Header
-//https://docs.python.org/3/library/struct.html
+#https://learn.microsoft.com/en-us/windows/win32/winsock/sio-rcvall
+#https://learn.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-inet_ntoa
+#https://en.wikipedia.org/wiki/Internet_Protocol_version_4#Header
+#https://docs.python.org/3/library/struct.html
 
-//permission issue? cannot run though
+#permission issue? cannot run though
 
 '''
 //struct ipheader {
@@ -22,7 +22,7 @@
 }; 
 '''
 
-```
+'''
 !: This specifies that the byte order is big-endian. Network byte order is always big-endian, which means the most significant byte is stored first. This is important for interpreting multi-byte numbers correctly across different systems that may use different byte orders natively.
 
 B: Unsigned char (1 byte). The first B is for the version and IHL (Internet Header Length) fields, which are packed into a single byte. The version is the first 4 bits, and the IHL is the last 4 bits of this byte.
@@ -44,7 +44,7 @@ H: Unsigned short (2 bytes). This is for the Header Checksum, a checksum used fo
 4s: Four-byte string. This represents the Source IP Address. It's treated as a string of 4 bytes, which matches the size of an IPv4 address.
 
 4s: Four-byte string. This is for the Destination IP Address, formatted the same way as the Source IP Address.
-```
+'''
 
 
 import socket
