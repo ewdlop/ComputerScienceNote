@@ -1,10 +1,12 @@
 //blackbox.ai generated
 
 import socket
+import datetime
+import struct
 
 def log_nmap_scan(source_ip):
     with open("nmap_scans.log", "a") as log_file:
-        log_file.write(f"Nmap scan detected from {source_ip} at {datetime.now()}\n")
+        log_file.write(f"Nmap scan detected from {source_ip} at {datetime.datetime.now()}\n")
 
 def monitor_network():
     sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
